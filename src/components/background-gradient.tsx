@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
+import React, { useEffect, useRef } from "react"
 
 interface BackgroundGradientProps {
   children: React.ReactNode
@@ -25,7 +25,7 @@ export const BackgroundGradient: React.FC<BackgroundGradientProps> = ({
       const container = containerRef.current
       if (!container) return
 
-      const { left, top, width, height } = container.getBoundingClientRect()
+      const { left, top } = container.getBoundingClientRect()
       const x = e.clientX - left
       const y = e.clientY - top
 
@@ -60,4 +60,3 @@ export const BackgroundGradient: React.FC<BackgroundGradientProps> = ({
     </div>
   )
 }
-
