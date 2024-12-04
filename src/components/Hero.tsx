@@ -6,7 +6,7 @@ import Image from "next/image"
 export default function Hero() {
   return (
     <section className='bg-gray-50 py-20'>
-      <div className='container mx-auto px-4 flex flex-col md:flex-row items-center'>
+      <div className='container mx-auto px-4 gap-5 flex flex-col md:flex-row items-center'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -20,13 +20,14 @@ export default function Hero() {
             Automated, accurate, and efficient microscopic sampling for the
             future of medical diagnostics.
           </p>
-          <motion.button
+          <motion.a
+            href='/about'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className='bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors duration-200'
           >
             Learn More
-          </motion.button>
+          </motion.a>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 20 }}
