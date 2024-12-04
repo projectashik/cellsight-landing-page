@@ -1,34 +1,22 @@
-"use client"
-
-import AvailableTests from "@/components/AvailableTests"
-import Benefits from "@/components/Benefits"
-import Contact from "@/components/Contact"
-import Features from "@/components/Features"
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
-import Hero from "@/components/Hero"
-import HowItWorks from "@/components/HowItWorks"
-import Testimonials from "@/components/Testimonials"
-import { motion } from "framer-motion"
+import Header from '@/components/Header'
+import Hero from '@/components/Hero'
+import Features from '@/components/Features'
+import HowItWorks from '@/components/HowItWorks'
+import Contact from '@/components/Contact'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-background text-text'>
+    <div className="min-h-screen bg-gray-50">
       <Header />
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <main>
         <Hero />
         <Features />
         <HowItWorks />
-        <AvailableTests />
-        <Benefits />
-        <Testimonials />
         <Contact />
-      </motion.main>
+      </main>
       <Footer />
     </div>
   )
 }
+

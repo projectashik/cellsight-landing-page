@@ -1,57 +1,39 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import Link from 'next/link'
-import { Menu } from 'lucide-react'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { scrollY } = useScroll()
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50)
-  })
-
-  const navVariants = {
-    top: {
-      backgroundColor: 'rgba(10, 25, 47, 0)',
-      boxShadow: 'none',
-    },
-    scrolled: {
-      backgroundColor: 'rgba(10, 25, 47, 0.8)',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    },
-  }
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      initial="top"
-      animate={isScrolled ? "scrolled" : "top"}
-      variants={navVariants}
-    >
-      <nav className={`container mx-auto px-4 py-4 flex justify-between items-center ${isScrolled ? 'glassmorphism' : ''}`}>
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/" className="text-2xl font-bold text-primary">
-            CellSight
-          </Link>
-        </motion.div>
+    <header className="bg-white shadow-sm">
+      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-blue-600">
+          CellSight
+        </Link>
         <div className="hidden md:flex space-x-6">
           <NavLink href="#features">Features</NavLink>
           <NavLink href="#how-it-works">How It Works</NavLink>
-          <NavLink href="#available-tests">Available Tests</NavLink>
-          <NavLink href="#benefits">Benefits</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </div>
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            <Menu className="w-6 h-6 text-secondary" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
           </button>
         </div>
       </nav>
@@ -60,27 +42,41 @@ export default function Header() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden glassmorphism"
+          className="md:hidden bg-white shadow-md py-2"
         >
-          <div className="container mx-auto px-4 py-2 flex flex-col space-y-2">
-            <NavLink href="#features" onClick={() => setIsOpen(false)}>Features</NavLink>
-            <NavLink href="#how-it-works" onClick={() => setIsOpen(false)}>How It Works</NavLink>
-            <NavLink href="#available-tests" onClick={() => setIsOpen(false)}>Available Tests</NavLink>
-            <NavLink href="#benefits" onClick={() => setIsOpen(false)}>Benefits</NavLink>
-            <NavLink href="#contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
+          <div className="container mx-auto px-4 flex flex-col space-y-2">
+            <NavLink href="#features" onClick={() => setIsOpen(false)}>
+              Features
+            </NavLink>
+            <NavLink href="#how-it-works" onClick={() => setIsOpen(false)}>
+              How It Works
+            </NavLink>
+            <NavLink href="#contact" onClick={() => setIsOpen(false)}>
+              Contact
+            </NavLink>
           </div>
         </motion.div>
       )}
-    </motion.header>
-  )
+    </header>
+  );
 }
 
-function NavLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
+function NavLink({
+  href,
+  children,
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
-    <Link href={href} className="text-text hover:text-secondary transition-colors duration-200" onClick={onClick}>
+    <Link
+      href={href}
+      className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+      onClick={onClick}
+    >
       {children}
     </Link>
-  )
+  );
 }
-

@@ -1,30 +1,34 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Zap, DollarSign, MapPin, Layers } from 'lucide-react'
+import { motion } from "framer-motion";
+import { Zap, DollarSign, MapPin, Layers } from "lucide-react";
 
 const benefits = [
   {
     icon: Layers,
-    title: 'Multiple Tests, One Device',
-    description: 'A single CellSight device can run multiple microscopic screening tests, saving space and resources.',
+    title: "Multiple Tests, One Device",
+    description:
+      "A single CellSight device can run multiple microscopic screening tests, saving space and resources.",
   },
   {
     icon: Zap,
-    title: 'Easy to Use',
-    description: 'User-friendly interface and automated processes make CellSight simple to operate for all skill levels.',
+    title: "Easy to Use",
+    description:
+      "User-friendly interface and automated processes make CellSight simple to operate for all skill levels.",
   },
   {
     icon: MapPin,
-    title: 'Remote Access',
-    description: 'CellSight can be deployed and operated in remote areas, bringing advanced diagnostics to underserved regions.',
+    title: "Remote Access",
+    description:
+      "CellSight can be deployed and operated in remote areas, bringing advanced diagnostics to underserved regions.",
   },
   {
     icon: DollarSign,
-    title: 'Cost-Effective',
-    description: 'Affordable pricing and multi-functionality make CellSight a cost-effective solution for healthcare providers.',
+    title: "Cost-Effective",
+    description:
+      "Affordable pricing and multi-functionality make CellSight a cost-effective solution for healthcare providers.",
   },
-]
+];
 
 export default function Benefits() {
   return (
@@ -41,10 +45,12 @@ export default function Benefits() {
               className="flex items-start space-x-4"
             >
               <div className="flex-shrink-0">
-                <benefit.icon className="w-8 h-8 text-accent" />
+                <benefit.icon className="w-8 h-8 text-blue-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-primary mb-2">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  {benefit.title}
+                </h3>
                 <p className="text-text">{benefit.description}</p>
               </div>
             </motion.div>
@@ -52,6 +58,5 @@ export default function Benefits() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
